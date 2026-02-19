@@ -34,7 +34,7 @@ OBJS = \
 	$K/time.o\
 
 # Cross-compiling (e.g., on Mac OS X)
-# TOOLPREFIX = i386-jos-elf
+TOOLPREFIX = i686-elf-
 
 # Using native tools (e.g., on X86 Linux)
 #TOOLPREFIX =
@@ -146,7 +146,7 @@ $U/_forktest: $U/forktest.o $(ULIB)
 	$(OBJDUMP) -S $U/_forktest > $U/forktest.asm
 
 fs/mkfs: fs/mkfs.c include/fs.h 
-	gcc -Werror -Wall -Wno-stringop-truncation -I. -o fs/mkfs fs/mkfs.c
+	gcc -Werror -Wall -Wno-format-truncation -I. -o fs/mkfs fs/mkfs.c
 
 # Prevent deletion of intermediate files, e.g. cat.o, after first build, so
 # that disk image changes after first build are persistent until clean.  More
